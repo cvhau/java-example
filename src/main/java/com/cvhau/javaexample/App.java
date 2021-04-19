@@ -11,9 +11,10 @@ public class App {
         String result = StringUtils.stripAccents(text);
         System.out.println(result);
 
-        Slugify slugify = new Slugify()
-                .withCustomReplacement("đ", "d")
-                .withCustomReplacement("Đ", "D");
+//        Slugify slugify = new Slugify()
+//                .withCustomReplacement("đ", "d")
+//                .withCustomReplacement("Đ", "D");
+        Slugify slugify = new Slugify().withTransliterator(true);
         String slugifyResult = slugify.slugify(text);
         System.out.println(slugifyResult);
 
@@ -21,5 +22,18 @@ public class App {
 
         String result1 = slugify.slugify(text1);
         System.out.println(result1);
+
+        char[] dChars = new char[] {
+                '\u0414', '\u0434', '\u0394', '\u03B4', '\u062F', '\u0636', '\u0111', '\u0110'
+        };
+
+        System.out.println("List of D chars:");
+
+        for (char d : dChars) {
+            System.out.println("    " + d);
+        }
+
+//        System.out.println(Integer.toHexString((int) 'đ'));
+//        System.out.println(Integer.toHexString((int) 'Đ'));
     }
 }
